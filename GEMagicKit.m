@@ -79,10 +79,14 @@
     NSString *typeIdentifier = [NSMakeCollectable(UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (CFStringRef)plainMimeType, NULL)) autorelease];
     NSArray *typeHierarchy = [[NSArray arrayWithObject:typeIdentifier] arrayByAddingObjectsFromArray:[GEMagicKit typeHierarchyForType:typeIdentifier]];
     
+	NSString *extension = ( NSString *)UTTypeCopyPreferredTagWithClass(( CFStringRef)typeIdentifier, kUTTagClassFilenameExtension);
+
     GEMagicResult *result = [[GEMagicResult alloc] initWithMimeType:mimeType 
-                                                        description:description 
+                                                        description:description
+														  extension:extension
                                                       typeHierarchy:typeHierarchy];
     
+	[extension autorelease];
     return [result autorelease];
 }
 

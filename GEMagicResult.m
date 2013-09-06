@@ -31,13 +31,18 @@
 @synthesize description;
 @synthesize uniformType;
 @synthesize uniformTypeHierarchy;
+@synthesize extension;
 
-- (id)initWithMimeType:(NSString *)aMimeType description:(NSString *)aDescription typeHierarchy:(NSArray *)typeHierarchy {
+- (id)initWithMimeType:(NSString *)aMimeType
+		   description:(NSString *)aDescription
+			 extension:(NSString *)aExtension
+		 typeHierarchy:(NSArray *)typeHierarchy {
     self = [super init];
 	if (self) {
         mimeType = [aMimeType copy];
         description = [aDescription copy];
         uniformTypeHierarchy = [typeHierarchy copy];
+		extension = [aExtension copy];
         if (self.uniformTypeHierarchy.count)
             uniformType = [[self.uniformTypeHierarchy objectAtIndex:0] retain];
     }
@@ -49,6 +54,7 @@
     [mimeType release];
     [description release];
     [uniformType release];
+	[extension release];
     [uniformTypeHierarchy release];
     [super dealloc];
 }

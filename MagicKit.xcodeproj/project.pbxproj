@@ -6,7 +6,23 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		1908D68317D7674100845454 /* MagicKit-Universal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1908D68417D7674100845454 /* Build configuration list for PBXAggregateTarget "MagicKit-Universal" */;
+			buildPhases = (
+				1908D68717D7679400845454 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "MagicKit-Universal";
+			productName = "MagicKit-Universal";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
+		1908D68C17D7737600845454 /* GEMagicResult.h in Headers */ = {isa = PBXBuildFile; fileRef = DD610A1D1271094B003CF804 /* GEMagicResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1908D6CE17D7B31700845454 /* magic.mgc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3DCAF01B162D9C520036D9BF /* magic.mgc */; };
 		3DCAEFDD162D893A0036D9BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC92A8912618B050012DE28 /* libz.dylib */; };
 		3DCAEFE6162D8BDE0036D9BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCAEFE5162D8BDE0036D9BF /* Foundation.framework */; };
 		3DCAF01C162D9C520036D9BF /* magic.mgc in Resources */ = {isa = PBXBuildFile; fileRef = 3DCAF01B162D9C520036D9BF /* magic.mgc */; };
@@ -14,9 +30,8 @@
 		DD2BBE3D1262DBD3001B55D4 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2BBE3C1262DBD3001B55D4 /* CoreServices.framework */; };
 		DD610A1F1271094B003CF804 /* GEMagicResult.h in Headers */ = {isa = PBXBuildFile; fileRef = DD610A1D1271094B003CF804 /* GEMagicResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD610A201271094B003CF804 /* GEMagicResult.m in Sources */ = {isa = PBXBuildFile; fileRef = DD610A1E1271094B003CF804 /* GEMagicResult.m */; };
-		DD610A4512710B7B003CF804 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD610A4412710B7B003CF804 /* MobileCoreServices.framework */; };
 		DD610A6712710C90003CF804 /* MagicKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DD610A6612710C90003CF804 /* MagicKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD610A6812710C90003CF804 /* MagicKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DD610A6612710C90003CF804 /* MagicKit.h */; };
+		DD610A6812710C90003CF804 /* MagicKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DD610A6612710C90003CF804 /* MagicKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDC9299A126187080012DE28 /* apprentice.c in Sources */ = {isa = PBXBuildFile; fileRef = DDC92978126187080012DE28 /* apprentice.c */; };
 		DDC9299B126187080012DE28 /* apptype.c in Sources */ = {isa = PBXBuildFile; fileRef = DDC92979126187080012DE28 /* apptype.c */; };
 		DDC9299C126187080012DE28 /* ascmagic.c in Sources */ = {isa = PBXBuildFile; fileRef = DDC9297A126187080012DE28 /* ascmagic.c */; };
@@ -89,9 +104,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1908D6CD17D7B30900845454 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = Resources;
+			dstSubfolderSpec = 16;
+			files = (
+				1908D6CE17D7B31700845454 /* magic.mgc in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		1908D69917D7AEC800845454 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		32DBCF5E0370ADEE00C91783 /* MagicKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicKit_Prefix.pch; sourceTree = "<group>"; };
 		3DCAEFE5162D8BDE0036D9BF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3DCAEFF4162D8C950036D9BF /* MagicKitTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MagicKitTest-Prefix.pch"; path = "MagicKitTest/MagicKitTest-Prefix.pch"; sourceTree = "<group>"; };
@@ -101,7 +130,6 @@
 		DD2BBE3C1262DBD3001B55D4 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		DD610A1D1271094B003CF804 /* GEMagicResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEMagicResult.h; sourceTree = "<group>"; };
 		DD610A1E1271094B003CF804 /* GEMagicResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEMagicResult.m; sourceTree = "<group>"; };
-		DD610A4412710B7B003CF804 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DD610A6612710C90003CF804 /* MagicKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicKit.h; sourceTree = "<group>"; };
 		DDC92978126187080012DE28 /* apprentice.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = apprentice.c; path = libmagic/apprentice.c; sourceTree = SOURCE_ROOT; };
 		DDC92979126187080012DE28 /* apptype.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = apptype.c; path = libmagic/apptype.c; sourceTree = SOURCE_ROOT; };
@@ -171,7 +199,6 @@
 			files = (
 				DDC92A8812618B050012DE28 /* Foundation.framework in Frameworks */,
 				DDC92A8A12618B050012DE28 /* libz.dylib in Frameworks */,
-				DD610A4512710B7B003CF804 /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +240,7 @@
 		089C1665FE841158C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3DCAF01B162D9C520036D9BF /* magic.mgc */,
 				8DC2EF5A0486A6940098B216 /* Info.plist */,
 				DDC92C5D1261A07F0012DE28 /* LICENCE */,
 				DDC92C6E1261A2640012DE28 /* README.markdown */,
@@ -234,7 +262,6 @@
 		1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DD610A4412710B7B003CF804 /* MobileCoreServices.framework */,
 				DD2BBE3C1262DBD3001B55D4 /* CoreServices.framework */,
 				DDC929C0126187420012DE28 /* libz.1.1.3.dylib */,
 				DDC92A8712618B050012DE28 /* Foundation.framework */,
@@ -264,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				3DCAEFE5162D8BDE0036D9BF /* Foundation.framework */,
+				1908D69917D7AEC800845454 /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -271,7 +299,6 @@
 		DDC92977126186FD0012DE28 /* libmagic */ = {
 			isa = PBXGroup;
 			children = (
-				3DCAF01B162D9C520036D9BF /* magic.mgc */,
 				DDC929BC1261872F0012DE28 /* config.h */,
 				DDC92978126187080012DE28 /* apprentice.c */,
 				DDC92979126187080012DE28 /* apptype.c */,
@@ -353,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDC92B4B12618BEE0012DE28 /* GEMagicKit.h in Headers */,
+				1908D68C17D7737600845454 /* GEMagicResult.h in Headers */,
 				DD610A6812710C90003CF804 /* MagicKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,9 +428,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDC92A8D12618B050012DE28 /* Build configuration list for PBXNativeTarget "MagicKit-iOS" */;
 			buildPhases = (
-				DDC92A8012618AE90012DE28 /* Headers */,
 				DDC92A8112618AE90012DE28 /* Sources */,
 				DDC92A8212618AE90012DE28 /* Frameworks */,
+				DDC92A8012618AE90012DE28 /* Headers */,
+				1908D6CD17D7B30900845454 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -430,6 +459,7 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* MagicKit */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
@@ -439,6 +469,7 @@
 				8DC2EF4F0486A6940098B216 /* MagicKit */,
 				DDC92A8312618AE90012DE28 /* MagicKit-iOS */,
 				3DCAEFE1162D8BDE0036D9BF /* MagicKitTest */,
+				1908D68317D7674100845454 /* MagicKit-Universal */,
 			);
 		};
 /* End PBXProject section */
@@ -454,6 +485,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1908D68717D7679400845454 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -x\n# Sets the target folders and the final framework product.\nFMK_NAME=MagicKit\nFMK_VERSION=B\n\n# Install dir will be the final output to the framework.\n# The following line create it in the root folder of the current project.\nINSTALL_DIR=${PROJECT_DIR}/${FMK_NAME}.framework\n\n# Working dir will be deleted after the framework creation.\nWRK_DIR=${SYMROOT}\n\nDEVICE_DIR=${WRK_DIR}/Release-iphoneos/${FMK_NAME}.framework\nSIMULATOR_DIR=${WRK_DIR}/Release-iphonesimulator/${FMK_NAME}.framework\n\nDEVLIB=${WRK_DIR}/Release-iphoneos/${FMK_NAME}-iOS\nSIMLIB=${WRK_DIR}/Release-iphonesimulator/${FMK_NAME}-iOS\n\n# Cleaning the oldest.\nif [ -d \"${INSTALL_DIR}\" ]\nthen\nrm -rf \"${INSTALL_DIR}\"\nfi\n\n# Creates and renews the final product folder.\nmkdir -p \"${INSTALL_DIR}\"\nmkdir -p \"${INSTALL_DIR}/Versions\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers\"\n\n# Creates the internal links.\n# It MUST uses relative path, otherwise will not work when the folder is copied/moved.\nln -s \"${FMK_VERSION}\" \"${INSTALL_DIR}/Versions/Current\"\nln -s \"Versions/Current/Headers\" \"${INSTALL_DIR}/Headers\"\nln -s \"Versions/Current/Resources\" \"${INSTALL_DIR}/Resources\"\nln -s \"Versions/Current/${FMK_NAME}\" \"${INSTALL_DIR}/${FMK_NAME}\"\n\n# Copies the headers and resources files to the final product folder.\ncp -R \"${DEVICE_DIR}/Headers/\" \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers/\"\ncp -R \"${DEVICE_DIR}/../Resources\" \"${INSTALL_DIR}/Versions/${FMK_VERSION}/\"\n\n# Removes the binary and header from the resources folder.\nrm -rf \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources/Headers\" \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources/${FMK_NAME}\"\n\n# Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\npwd > /tmp/install.log\necho \"lipo -create \\\"${DEVLIB}\" \"${SIMLIB}\\\" -output \\\"${INSTALL_DIR}/Versions/${FMK_VERSION}/${FMK_NAME}\\\"\" >> /tmp/install.log\n\nlipo -create \"${DEVLIB}\" \"${SIMLIB}\" -output \"${INSTALL_DIR}/Versions/${FMK_VERSION}/${FMK_NAME}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3DCAEFDE162D8BDE0036D9BF /* Sources */ = {
@@ -534,6 +581,28 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		1908D68517D7674100845454 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MACH_O_TYPE = mh_object;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1908D68617D7674100845454 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MACH_O_TYPE = mh_object;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
 		1DEB91AE08733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -643,12 +712,30 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = armv7;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				EXECUTABLE_EXTENSION = "";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_VERSION = B;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "HAVE_CONFIG_H=1";
+				INSTALL_PATH = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = MagicKit.framework/PrivateHeaders;
 				PRODUCT_NAME = "MagicKit-iOS";
+				PUBLIC_HEADERS_FOLDER_PATH = MagicKit.framework/Headers;
 				SDKROOT = iphoneos;
+				SEPARATE_STRIP = NO;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				WARNING_LDFLAGS = "";
+				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
 		};
@@ -658,17 +745,42 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = armv7;
 				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_EXTENSION = "";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_VERSION = B;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "HAVE_CONFIG_H=1";
+				INSTALL_PATH = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = MagicKit.framework/PrivateHeaders;
 				PRODUCT_NAME = "MagicKit-iOS";
+				PUBLIC_HEADERS_FOLDER_PATH = MagicKit.framework/Headers;
 				SDKROOT = iphoneos;
+				SEPARATE_STRIP = NO;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				WARNING_LDFLAGS = "";
+				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1908D68417D7674100845454 /* Build configuration list for PBXAggregateTarget "MagicKit-Universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1908D68517D7674100845454 /* Debug */,
+				1908D68617D7674100845454 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "MagicKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

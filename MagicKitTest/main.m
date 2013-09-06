@@ -35,6 +35,8 @@ int main (int argc, const char * argv[]) {
         
         NSLog(@"MIME Type: %@", result.mimeType);
         NSLog(@"Description: %@", result.description);
+		NSLog(@"Uniform Type: %@", result.uniformType);
+		NSLog(@"Extension: %@", result.extension);
         NSLog(@"UTIs: %@", result.uniformTypeHierarchy);
     } else {
         NSLog(@"Supply a path to the file whose type you wish to determine.");
