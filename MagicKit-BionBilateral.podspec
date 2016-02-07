@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/BionBilateral/MagicKit'
   s.author   = { 'William Towe' => 'will@bionbilateral.com' }
   s.source   = { :git => 'https://github.com/BionBilateral/MagicKit.git',
-                 :tag => '0.0.2' }
+                 :tag => '0.0.3' }
 
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.7'
