@@ -24,7 +24,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <MagicKit/MagicKit.h>
 
 @interface GEMagicResult : NSObject {
     NSString *mimeType;

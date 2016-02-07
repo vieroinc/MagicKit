@@ -10,8 +10,6 @@
 		3DCAEFE6162D8BDE0036D9BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCAEFE5162D8BDE0036D9BF /* Foundation.framework */; };
 		3DCAF01C162D9C520036D9BF /* magic.mgc in Resources */ = {isa = PBXBuildFile; fileRef = 3DCAF01B162D9C520036D9BF /* magic.mgc */; };
 		5F4F51871551FFD300248063 /* GEMagicResult.m in Sources */ = {isa = PBXBuildFile; fileRef = DD610A1E1271094B003CF804 /* GEMagicResult.m */; };
-		792EA7121C6705C7007EC7C7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 792EA7111C6705C7007EC7C7 /* libz.tbd */; };
-		792EA7141C6705D0007EC7C7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 792EA7131C6705D0007EC7C7 /* libz.tbd */; };
 		DD2BBE3D1262DBD3001B55D4 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2BBE3C1262DBD3001B55D4 /* CoreServices.framework */; };
 		DD610A1F1271094B003CF804 /* GEMagicResult.h in Headers */ = {isa = PBXBuildFile; fileRef = DD610A1D1271094B003CF804 /* GEMagicResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD610A201271094B003CF804 /* GEMagicResult.m in Sources */ = {isa = PBXBuildFile; fileRef = DD610A1E1271094B003CF804 /* GEMagicResult.m */; };
@@ -161,7 +159,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				792EA7141C6705D0007EC7C7 /* libz.tbd in Frameworks */,
 				DDC929DB126187CE0012DE28 /* Foundation.framework in Frameworks */,
 				DD2BBE3D1262DBD3001B55D4 /* CoreServices.framework in Frameworks */,
 			);
@@ -171,7 +168,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				792EA7121C6705C7007EC7C7 /* libz.tbd in Frameworks */,
 				DDC92A8812618B050012DE28 /* Foundation.framework in Frameworks */,
 				DD610A4512710B7B003CF804 /* MobileCoreServices.framework in Frameworks */,
 			);
