@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name     = 'MagicKit-BionBilateral'
   s.module_name = 'MagicKit'
-  s.version  = '0.0.2'
+  s.version  = '0.0.3'
   s.license  = 'MIT'
   s.summary  = 'Fork of MagicKit with fixes for errors and warnings present in later versions of Clang'
   s.homepage = 'https://github.com/BionBilateral/MagicKit'
