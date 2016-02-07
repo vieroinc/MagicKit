@@ -335,7 +335,7 @@ main(int argc, char *argv[])
 			bflag = optind >= argc - 1;
 		}
 		for (; optind < argc; optind++)
-			e |= process(magic, argv[optind], wid);
+			e |= process(magic, argv[optind], (int)wid);
 	}
 
 	if (magic)
@@ -388,7 +388,7 @@ unwrap(struct magic_set *ms, const char *fn)
 		while ((len = getline(&line, &llen, f)) > 0) {
 			if (line[len - 1] == '\n')
 				line[len - 1] = '\0';
-			cwid = file_mbswidth(line);
+			cwid = (int)file_mbswidth(line);
 			if (cwid > wid)
 				wid = cwid;
 		}
