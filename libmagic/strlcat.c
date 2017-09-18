@@ -30,7 +30,7 @@
  * If retval >= siz, truncation occurred.
  */
 size_t
-magic_strlcat(char *dst, const char *src, size_t siz)
+strlcat(char *dst, const char *src, size_t siz)
 {
 	char *d = dst;
 	const char *s = src;

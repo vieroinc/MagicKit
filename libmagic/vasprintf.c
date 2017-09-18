@@ -83,12 +83,12 @@ trying to do any interpretation
 flag:   none   +     -     #     (blank)
 width:  n    0n    *
 prec:   none   .0    .n     .*
-modifier:    F N L h l ll    ('F' and 'N' are ms-dos/16-bit specific)
+modifier:    F N L h l ll z t    ('F' and 'N' are ms-dos/16-bit specific)
 type:  d i o u x X f e g E G c s p n
 
 
 The function needs to allocate memory to store the full text before to
-actually writting it.  i.e if you want to fnprintf() 1000 characters, the
+actually writing it.  i.e if you want to fnprintf() 1000 characters, the
 functions will allocate 1000 bytes.
 This behaviour can be modified: you have to customise the code to flush the
 internal buffer (writing to screen or file) when it reach a given size. Then
@@ -108,7 +108,7 @@ you use strange formats.
 #include "file.h"
 
 #ifndef	lint
-FILE_RCSID("@(#)$File: vasprintf.c,v 1.8 2011/12/08 12:38:24 rrt Exp $")
+FILE_RCSID("@(#)$File: vasprintf.c,v 1.14 2017/08/13 00:21:47 christos Exp $")
 #endif	/* lint */
 
 #include <assert.h>
@@ -118,6 +118,9 @@ FILE_RCSID("@(#)$File: vasprintf.c,v 1.8 2011/12/08 12:38:24 rrt Exp $")
 #include <ctype.h>
 #ifdef HAVE_LIMITS_H
 #include <limits.h>
+#endif
+#ifdef HAVE_STDDEF_H
+#include <stddef.h>
 #endif
 
 #define ALLOC_CHUNK 2048
@@ -385,7 +388,12 @@ static int dispatch(xprintf_struct *s)
     prec = -1;                  /* no .prec specified */
 
   /* modifier */
-  if (*SRCTXT == 'L' || *SRCTXT == 'h' || *SRCTXT == 'l') {
+  switch (*SRCTXT) {
+  case 'L':
+  case 'h':
+  case 'l':
+  case 'z':
+  case 't':
     modifier = *SRCTXT;
     SRCTXT++;
     if (modifier=='l' && *SRCTXT=='l') {
@@ -393,8 +401,11 @@ static int dispatch(xprintf_struct *s)
       modifier = 'L';  /* 'll' == 'L'      long long == long double */
     } /* only for compatibility ; not portable */
     INCOHERENT_TEST();
-  } else
+    break;
+  default:
     modifier = -1;              /* no modifier specified */
+    break;
+  }
 
   /* type */
   type = *SRCTXT;
@@ -477,6 +488,10 @@ static int dispatch(xprintf_struct *s)
       return print_it(s, (size_t)approx_width, format_string, va_arg(s->vargs, long int));
     case 'h':
       return print_it(s, (size_t)approx_width, format_string, va_arg(s->vargs, int));
+    case 'z':
+      return print_it(s, (size_t)approx_width, format_string, va_arg(s->vargs, size_t));
+    case 't':
+      return print_it(s, (size_t)approx_width, format_string, va_arg(s->vargs, ptrdiff_t));
       /* 'int' instead of 'short int' because default promotion is 'int' */
     default:
       INCOHERENT();
@@ -521,7 +536,7 @@ static int dispatch(xprintf_struct *s)
       int * p;
       p = va_arg(s->vargs, int *);
       if (p != NULL) {
-        *p = (int)s->pseudo_len;
+        *p = s->pseudo_len;
         return 0;
       }
       return EOF;
@@ -544,7 +559,7 @@ static int dispatch(xprintf_struct *s)
  */
 static int core(xprintf_struct *s)
 {
-  size_t len, save_len;
+  size_t save_len;
   char *dummy_base;
 
   /* basic checks */
@@ -569,8 +584,7 @@ static int core(xprintf_struct *s)
   for (;;) {
     /* up to end of source string */
     if (*(s->src_string) == 0) {
-      *(s->dest_string) = 0;    /* final 0 */
-      len = s->real_len + 1;
+      *(s->dest_string) = '\0';    /* final NUL */
       break;
     }
 
@@ -579,15 +593,13 @@ static int core(xprintf_struct *s)
 
     /* up to end of dest string */
     if (s->real_len >= s->maxlen) {
-      (s->buffer_base)[s->maxlen] = 0; /* final 0 */
-      len = s->maxlen + 1;
+      (s->buffer_base)[s->maxlen] = '\0'; /* final NUL */
       break;
     }
   }
 
   /* for (v)asnprintf */
   dummy_base = s->buffer_base;
-  save_len = 0;                 /* just to avoid a compiler warning */
 
   dummy_base = s->buffer_base + s->real_len;
   save_len = s->real_len;
@@ -605,7 +617,7 @@ static int core(xprintf_struct *s)
   s->buffer_base = (char *)realloc((void *)(s->buffer_base), save_len + 1);
   if (s->buffer_base == NULL)
     return EOF; /* should rarely happen because we shrink the buffer */
-  return (int)s->pseudo_len;
+  return s->pseudo_len;
 
  free_EOF:
   free(s->buffer_base);
@@ -621,11 +633,15 @@ int vasprintf(char **ptr, const char *format_string, va_list vargs)
 #ifdef va_copy
   va_copy (s.vargs, vargs);
 #else
-#ifdef __va_copy
+# ifdef __va_copy
   __va_copy (s.vargs, vargs);
-#else
-  memcpy (&s.vargs, vargs, sizeof (va_list));
-#endif /* __va_copy */
+# else
+#  ifdef WIN32
+  s.vargs = vargs;
+#  else
+  memcpy (&s.vargs, &vargs, sizeof (s.va_args));
+#  endif /* WIN32 */
+# endif /* __va_copy */
 #endif /* va_copy */
   s.maxlen = (size_t)INT_MAX;
 

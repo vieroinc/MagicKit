@@ -35,7 +35,7 @@
 #include "file.h"
 
 #ifndef	lint
-FILE_RCSID("@(#)$File: ascmagic.c,v 1.84 2011/12/08 12:38:24 rrt Exp $")
+FILE_RCSID("@(#)$File: ascmagic.c,v 1.96 2016/06/16 11:37:55 christos Exp $")
 #endif	/* lint */
 
 #include "magic.h"
@@ -72,15 +72,12 @@ file_ascmagic(struct magic_set *ms, const unsigned char *buf, size_t nbytes,
 	int text)
 {
 	unichar *ubuf = NULL;
-	size_t ulen;
+	size_t ulen = 0;
 	int rv = 1;
 
 	const char *code = NULL;
 	const char *code_mime = NULL;
 	const char *type = NULL;
-
-	if (ms->flags & MAGIC_APPLE)
-		return 0;
 
 	nbytes = trim_nuls(buf, nbytes);
 
@@ -123,9 +120,6 @@ file_ascmagic_with_encoding(struct magic_set *ms, const unsigned char *buf,
 	size_t last_line_end = (size_t)-1;
 	int has_long_lines = 0;
 
-	if (ms->flags & MAGIC_APPLE)
-		return 0;
-
 	nbytes = trim_nuls(buf, nbytes);
 
 	/* If we have fewer than 2 bytes, give up. */
@@ -134,7 +128,7 @@ file_ascmagic_with_encoding(struct magic_set *ms, const unsigned char *buf,
 		goto done;
 	}
 
-	if ((ms->flags & MAGIC_NO_CHECK_SOFT) == 0) {
+	if (ulen > 0 && (ms->flags & MAGIC_NO_CHECK_SOFT) == 0) {
 		/* Convert ubuf to UTF-8 and try text soft magic */
 		/* malloc size is a conservative overestimate; could be
 		   improved, or at least realloced after conversion. */
@@ -147,9 +141,16 @@ file_ascmagic_with_encoding(struct magic_set *ms, const unsigned char *buf,
 		    == NULL)
 			goto done;
 		if ((rv = file_softmagic(ms, utf8_buf,
-		    (size_t)(utf8_end - utf8_buf), TEXTTEST, text)) == 0)
+		    (size_t)(utf8_end - utf8_buf), NULL, NULL,
+		    TEXTTEST, text)) == 0)
 			rv = -1;
+		if ((ms->flags & (MAGIC_APPLE|MAGIC_EXTENSION))) {
+			rv = rv == -1 ? 0 : 1;
+			goto done;
+		}
 	}
+	if ((ms->flags & (MAGIC_APPLE|MAGIC_EXTENSION)))
+		return 0;
 
 	/* Now try to discover other details about the file. */
 	for (i = 0; i < ulen; i++) {
@@ -182,10 +183,10 @@ file_ascmagic_with_encoding(struct magic_set *ms, const unsigned char *buf,
 	}
 
 	/* Beware, if the data has been truncated, the final CR could have
-	   been followed by a LF.  If we have HOWMANY bytes, it indicates
+	   been followed by a LF.  If we have ms->bytes_max bytes, it indicates
 	   that the data might have been truncated, probably even before
 	   this function was called. */
-	if (seen_cr && nbytes < HOWMANY)
+	if (seen_cr && nbytes < ms->bytes_max)
 		n_cr++;
 
 	if (strcmp(type, "binary") == 0) {
@@ -211,6 +212,7 @@ file_ascmagic_with_encoding(struct magic_set *ms, const unsigned char *buf,
 				case 0:
 					if (file_printf(ms, ", ") == -1)
 						goto done;
+					break;
 				case -1:
 					goto done;
 				default:
