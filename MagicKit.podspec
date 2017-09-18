@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
-  s.name     = 'MagicKit-BionBilateral'
+  s.name     = 'MagicKit'
   s.module_name = 'MagicKit'
-  s.version  = '0.0.3'
+  s.version  = '0.0.4'
   s.license  = 'MIT'
-  s.summary  = 'Fork of MagicKit with fixes for errors and warnings present in later versions of Clang'
+  s.summary  = 'Fork of MagicKit with fixes for errors and warnings present in later versions of Clang and updated libmagic sources'
   s.homepage = 'https://github.com/BionBilateral/MagicKit'
-  s.author   = { 'William Towe' => 'will@bionbilateral.com' }
+  s.author   = { 'chezzdev' }
   s.source   = { :git => 'https://github.com/BionBilateral/MagicKit.git',
-                 :tag => '0.0.3' }
+                 :tag => '0.0.4' }
 
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.7'
