@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.license  = 'MIT'
   s.summary  = 'Fork of MagicKit with fixes for errors and warnings present in later versions of Clang and updated libmagic sources'
   s.homepage = 'https://github.com/BionBilateral/MagicKit'
-  s.author   = { 'chezzdev' }
+  s.author   = 'chezzdev'
   s.source   = { :git => 'https://github.com/BionBilateral/MagicKit.git',
                  :tag => '0.0.4' }
 
