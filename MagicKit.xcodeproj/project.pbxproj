@@ -49,6 +49,7 @@
 		2EE96B741F7123930057DD8C /* patchlevel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EE96B421F71232C0057DD8C /* patchlevel.h */; };
 		2EE96B751F7123930057DD8C /* readelf.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EE96B321F71232A0057DD8C /* readelf.h */; };
 		2EE96B761F7123930057DD8C /* tar.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EE96B4A1F71232D0057DD8C /* tar.h */; };
+		2EE96B781F71247B0057DD8C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EE96B771F71247A0057DD8C /* libz.tbd */; };
 		3DCAEFE6162D8BDE0036D9BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCAEFE5162D8BDE0036D9BF /* Foundation.framework */; };
 		3DCAF01C162D9C520036D9BF /* magic.mgc in Resources */ = {isa = PBXBuildFile; fileRef = 3DCAF01B162D9C520036D9BF /* magic.mgc */; };
 		5F4F51871551FFD300248063 /* GEMagicResult.m in Sources */ = {isa = PBXBuildFile; fileRef = DD610A1E1271094B003CF804 /* GEMagicResult.m */; };
@@ -125,12 +126,11 @@
 		2EE96B491F71232D0057DD8C /* ctime_r.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ctime_r.c; path = libmagic/ctime_r.c; sourceTree = "<group>"; };
 		2EE96B4A1F71232D0057DD8C /* tar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = tar.h; path = libmagic/tar.h; sourceTree = "<group>"; };
 		2EE96B4B1F71232D0057DD8C /* cdf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cdf.c; path = libmagic/cdf.c; sourceTree = "<group>"; };
+		2EE96B771F71247A0057DD8C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		32DBCF5E0370ADEE00C91783 /* MagicKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicKit_Prefix.pch; sourceTree = "<group>"; };
 		3DCAEFE5162D8BDE0036D9BF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3DCAEFF4162D8C950036D9BF /* MagicKitTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MagicKitTest-Prefix.pch"; path = "MagicKitTest/MagicKitTest-Prefix.pch"; sourceTree = "<group>"; };
 		3DCAF01B162D9C520036D9BF /* magic.mgc */ = {isa = PBXFileReference; lastKnownFileType = file; path = magic.mgc; sourceTree = "<group>"; };
-		792EA7111C6705C7007EC7C7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
-		792EA7131C6705D0007EC7C7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* MagicKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MagicKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2BBE3C1262DBD3001B55D4 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
@@ -165,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EE96B781F71247B0057DD8C /* libz.tbd in Frameworks */,
 				DDC929DB126187CE0012DE28 /* Foundation.framework in Frameworks */,
 				DD2BBE3D1262DBD3001B55D4 /* CoreServices.framework in Frameworks */,
 			);
@@ -267,8 +268,7 @@
 		3DCAEFE4162D8BDE0036D9BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				792EA7131C6705D0007EC7C7 /* libz.tbd */,
-				792EA7111C6705C7007EC7C7 /* libz.tbd */,
+				2EE96B771F71247A0057DD8C /* libz.tbd */,
 				3DCAEFE5162D8BDE0036D9BF /* Foundation.framework */,
 			);
 			name = Frameworks;
