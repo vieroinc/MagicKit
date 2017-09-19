@@ -27,12 +27,10 @@
 		2EE96B5D1F71232D0057DD8C /* softmagic.c in Sources */ = {isa = PBXBuildFile; fileRef = 2EE96B391F71232B0057DD8C /* softmagic.c */; };
 		2EE96B5E1F71232D0057DD8C /* getline.c in Sources */ = {isa = PBXBuildFile; fileRef = 2EE96B3A1F71232B0057DD8C /* getline.c */; };
 		2EE96B5F1F71232D0057DD8C /* pread.c in Sources */ = {isa = PBXBuildFile; fileRef = 2EE96B3B1F71232B0057DD8C /* pread.c */; };
-		2EE96B601F71232D0057DD8C /* strlcat.c in Sources */ = {isa = PBXBuildFile; fileRef = 2EE96B3C1F71232B0057DD8C /* strlcat.c */; };
 		2EE96B611F71232D0057DD8C /* fsmagic.c in Sources */ = {isa = PBXBuildFile; fileRef = 2EE96B3D1F71232B0057DD8C /* fsmagic.c */; };
 		2EE96B621F71232D0057DD8C /* readelf.c in Sources */ = {isa = PBXBuildFile; fileRef = 2EE96B3F1F71232B0057DD8C /* readelf.c */; };
 		2EE96B631F71232D0057DD8C /* vasprintf.c in Sources */ = {isa = PBXBuildFile; fileRef = 2EE96B411F71232C0057DD8C /* vasprintf.c */; };
 		2EE96B641F71232D0057DD8C /* cdf_time.c in Sources */ = {isa = PBXBuildFile; fileRef = 2EE96B431F71232C0057DD8C /* cdf_time.c */; };
-		2EE96B651F71232D0057DD8C /* strlcpy.c in Sources */ = {isa = PBXBuildFile; fileRef = 2EE96B441F71232C0057DD8C /* strlcpy.c */; };
 		2EE96B661F71232D0057DD8C /* asprintf.c in Sources */ = {isa = PBXBuildFile; fileRef = 2EE96B451F71232C0057DD8C /* asprintf.c */; };
 		2EE96B671F71232D0057DD8C /* magic.c in Sources */ = {isa = PBXBuildFile; fileRef = 2EE96B461F71232C0057DD8C /* magic.c */; };
 		2EE96B681F71232D0057DD8C /* getopt_long.c in Sources */ = {isa = PBXBuildFile; fileRef = 2EE96B471F71232C0057DD8C /* getopt_long.c */; };
@@ -112,7 +110,6 @@
 		2EE96B391F71232B0057DD8C /* softmagic.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = softmagic.c; path = libmagic/softmagic.c; sourceTree = "<group>"; };
 		2EE96B3A1F71232B0057DD8C /* getline.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = getline.c; path = libmagic/getline.c; sourceTree = "<group>"; };
 		2EE96B3B1F71232B0057DD8C /* pread.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = pread.c; path = libmagic/pread.c; sourceTree = "<group>"; };
-		2EE96B3C1F71232B0057DD8C /* strlcat.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = strlcat.c; path = libmagic/strlcat.c; sourceTree = "<group>"; };
 		2EE96B3D1F71232B0057DD8C /* fsmagic.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = fsmagic.c; path = libmagic/fsmagic.c; sourceTree = "<group>"; };
 		2EE96B3E1F71232B0057DD8C /* file.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = file.h; path = libmagic/file.h; sourceTree = "<group>"; };
 		2EE96B3F1F71232B0057DD8C /* readelf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = readelf.c; path = libmagic/readelf.c; sourceTree = "<group>"; };
@@ -120,7 +117,6 @@
 		2EE96B411F71232C0057DD8C /* vasprintf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = vasprintf.c; path = libmagic/vasprintf.c; sourceTree = "<group>"; };
 		2EE96B421F71232C0057DD8C /* patchlevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = patchlevel.h; path = libmagic/patchlevel.h; sourceTree = "<group>"; };
 		2EE96B431F71232C0057DD8C /* cdf_time.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cdf_time.c; path = libmagic/cdf_time.c; sourceTree = "<group>"; };
-		2EE96B441F71232C0057DD8C /* strlcpy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = strlcpy.c; path = libmagic/strlcpy.c; sourceTree = "<group>"; };
 		2EE96B451F71232C0057DD8C /* asprintf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = asprintf.c; path = libmagic/asprintf.c; sourceTree = "<group>"; };
 		2EE96B461F71232C0057DD8C /* magic.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = magic.c; path = libmagic/magic.c; sourceTree = "<group>"; };
 		2EE96B471F71232C0057DD8C /* getopt_long.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = getopt_long.c; path = libmagic/getopt_long.c; sourceTree = "<group>"; };
@@ -319,8 +315,6 @@
 				2EE96B321F71232A0057DD8C /* readelf.h */,
 				2EE96B391F71232B0057DD8C /* softmagic.c */,
 				2EE96B371F71232B0057DD8C /* strcasestr.c */,
-				2EE96B3C1F71232B0057DD8C /* strlcat.c */,
-				2EE96B441F71232C0057DD8C /* strlcpy.c */,
 				2EE96B4A1F71232D0057DD8C /* tar.h */,
 				2EE96B331F71232A0057DD8C /* teststrchr.c */,
 				2EE96B411F71232C0057DD8C /* vasprintf.c */,
@@ -508,7 +502,6 @@
 				2EE96B4D1F71232D0057DD8C /* readcdf.c in Sources */,
 				2EE96B4E1F71232D0057DD8C /* localtime_r.c in Sources */,
 				2EE96B571F71232D0057DD8C /* print.c in Sources */,
-				2EE96B601F71232D0057DD8C /* strlcat.c in Sources */,
 				2EE96B541F71232D0057DD8C /* apprentice.c in Sources */,
 				2EE96B5D1F71232D0057DD8C /* softmagic.c in Sources */,
 				2EE96B671F71232D0057DD8C /* magic.c in Sources */,
@@ -521,7 +514,6 @@
 				2EE96B621F71232D0057DD8C /* readelf.c in Sources */,
 				2EE96B5A1F71232D0057DD8C /* compress.c in Sources */,
 				2EE96B5F1F71232D0057DD8C /* pread.c in Sources */,
-				2EE96B651F71232D0057DD8C /* strlcpy.c in Sources */,
 				2EE96B6B1F71232D0057DD8C /* cdf.c in Sources */,
 				2EE96B611F71232D0057DD8C /* fsmagic.c in Sources */,
 				2EE96B581F71232D0057DD8C /* teststrchr.c in Sources */,
@@ -598,7 +590,8 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
@@ -612,7 +605,8 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 			};
 			name = Release;
 		};

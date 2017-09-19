@@ -76,20 +76,33 @@
         return nil;
     
     NSString *plainMimeType = [mimeType componentsSeparatedByString:@";"][0];
-    NSString *typeIdentifier = CFBridgingRelease(
-            UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)plainMimeType, NULL)
-    );
+    CFStringRef typeIdentifierRef = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)plainMimeType, NULL);
+
+    NSString *typeIdentifier = (__bridge NSString *)typeIdentifierRef;
     NSArray *typeHierarchy = [@[typeIdentifier] arrayByAddingObjectsFromArray:[GEMagicKit typeHierarchyForType:typeIdentifier]];
 
-    CFDictionaryRef typeDeclaration = UTTypeCopyDeclaration((__bridge CFStringRef)typeIdentifier);
-    CFDictionaryRef specification = CFDictionaryGetValue(typeDeclaration, kUTTypeTagSpecificationKey);
-    CFArrayRef fileExtensions = CFDictionaryGetValue(specification, kUTTagClassFilenameExtension);
-    NSString *fileExtension = CFBridgingRelease(CFArrayGetValueAtIndex(fileExtensions, 0));
-    
+    NSString *fileExtension;
+
+    if (UTTypeIsDeclared(typeIdentifierRef)) {
+        CFDictionaryRef typeDeclaration = UTTypeCopyDeclaration(typeIdentifierRef);
+        CFDictionaryRef specification = CFDictionaryGetValue(typeDeclaration, kUTTypeTagSpecificationKey);
+
+        CFArrayRef fileExtensions = NULL;
+        Boolean hasExtensions = CFDictionaryGetValueIfPresent(specification, kUTTagClassFilenameExtension, (const void **)&fileExtensions);
+
+        if (hasExtensions && CFArrayGetCount(fileExtensions) > 0) {
+            fileExtension = CFBridgingRelease(CFArrayGetValueAtIndex(fileExtensions, 0));
+        }
+
+        CFRelease(typeDeclaration);
+    }
+
     GEMagicResult *result = [[GEMagicResult alloc] initWithMimeType:mimeType
                                                         description:description
                                                       fileExtension:fileExtension
                                                       typeHierarchy:typeHierarchy];
+
+    CFRelease(typeIdentifierRef);
 
     return result;
 }
