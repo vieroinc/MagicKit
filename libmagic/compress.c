@@ -442,7 +442,7 @@ file_pipe2file(struct magic_set *ms, int fd, const void *startbuf,
 	return fd;
 }
 #if HAVE_FORK
-	#ifdef BUILTIN_DECOMPRESS
+#ifdef BUILTIN_DECOMPRESS
 
 #define FHCRC		(1 << 1)
 #define FEXTRA		(1 << 2)
