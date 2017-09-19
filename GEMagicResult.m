@@ -39,18 +39,9 @@
         description = [aDescription copy];
         uniformTypeHierarchy = [typeHierarchy copy];
         if (self.uniformTypeHierarchy.count)
-            uniformType = [[self.uniformTypeHierarchy objectAtIndex:0] retain];
+            uniformType = [self.uniformTypeHierarchy objectAtIndex:0];
     }
     return self;
-}
-
-- (void)dealloc;
-{
-    [mimeType release];
-    [description release];
-    [uniformType release];
-    [uniformTypeHierarchy release];
-    [super dealloc];
 }
 
 @end

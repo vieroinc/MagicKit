@@ -14,7 +14,6 @@ Pod::Spec.new do |s|
   s.resource = 'magic.mgc'  
   s.source_files = 'libmagic/*.{h,c}', '*.{h,m}'
   s.exclude_files = "libmagic/strlcpy.c","libmagic/strlcat.c"
-  s.requires_arc = false
 
   s.ios.frameworks   = 'Foundation', 'MobileCoreServices'
   s.osx.frameworks   = 'Foundation', 'CoreServices'

@@ -75,15 +75,17 @@
     if (!description || !mimeType)
         return nil;
     
-    NSString *plainMimeType = [[mimeType componentsSeparatedByString:@";"] objectAtIndex:0];
-    NSString *typeIdentifier = [NSMakeCollectable(UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (CFStringRef)plainMimeType, NULL)) autorelease];
-    NSArray *typeHierarchy = [[NSArray arrayWithObject:typeIdentifier] arrayByAddingObjectsFromArray:[GEMagicKit typeHierarchyForType:typeIdentifier]];
+    NSString *plainMimeType = [mimeType componentsSeparatedByString:@";"][0];
+    NSString *typeIdentifier = CFBridgingRelease(
+            UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)plainMimeType, NULL)
+    );
+    NSArray *typeHierarchy = [@[typeIdentifier] arrayByAddingObjectsFromArray:[GEMagicKit typeHierarchyForType:typeIdentifier]];
     
     GEMagicResult *result = [[GEMagicResult alloc] initWithMimeType:mimeType 
                                                         description:description 
                                                       typeHierarchy:typeHierarchy];
     
-    return [result autorelease];
+    return result;
 }
 
 + (NSString *)rawMagicOutputForObject:(id)dataOrFilePath cookie:(magic_t)cookie flags:(int)flags {
@@ -103,9 +105,9 @@
 
 + (NSArray *)typeHierarchyForType:(NSString *)uniformType {
     NSArray *typeHierarchy = nil;
-    
-    NSDictionary *typeDeclaration = [NSMakeCollectable(UTTypeCopyDeclaration((CFStringRef)uniformType)) autorelease];
-    id superTypes = [typeDeclaration objectForKey:(NSString *)kUTTypeConformsToKey];
+
+    NSDictionary *typeDeclaration = CFBridgingRelease(UTTypeCopyDeclaration((__bridge CFStringRef)uniformType));
+    id superTypes = typeDeclaration[(NSString *) kUTTypeConformsToKey];
     
     if ([superTypes isKindOfClass:[NSArray class]]) {
         NSMutableArray *mutableTypeHierarchy = [NSMutableArray arrayWithArray:superTypes];
@@ -115,7 +117,7 @@
 
         typeHierarchy = mutableTypeHierarchy;
     } else if ([superTypes isKindOfClass:[NSString class]]) {
-        typeHierarchy = [NSArray arrayWithObject:superTypes];
+        typeHierarchy = @[superTypes];
     }
     
     return typeHierarchy;

@@ -27,9 +27,7 @@
 
 @class GEMagicResult;
 
-@interface GEMagicKit : NSObject {
-    
-}
+@interface GEMagicKit : NSObject
 
 + (GEMagicResult *)magicForFileAtPath:(NSString *)path;
 + (GEMagicResult *)magicForFileAtURL:(NSURL *)aURL;
