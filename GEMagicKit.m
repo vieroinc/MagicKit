@@ -80,11 +80,17 @@
             UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)plainMimeType, NULL)
     );
     NSArray *typeHierarchy = [@[typeIdentifier] arrayByAddingObjectsFromArray:[GEMagicKit typeHierarchyForType:typeIdentifier]];
+
+    CFDictionaryRef typeDeclaration = UTTypeCopyDeclaration((__bridge CFStringRef)typeIdentifier);
+    CFDictionaryRef specification = CFDictionaryGetValue(typeDeclaration, kUTTypeTagSpecificationKey);
+    CFArrayRef fileExtensions = CFDictionaryGetValue(specification, kUTTagClassFilenameExtension);
+    NSString *fileExtension = CFBridgingRelease(CFArrayGetValueAtIndex(fileExtensions, 0));
     
-    GEMagicResult *result = [[GEMagicResult alloc] initWithMimeType:mimeType 
-                                                        description:description 
+    GEMagicResult *result = [[GEMagicResult alloc] initWithMimeType:mimeType
+                                                        description:description
+                                                      fileExtension:fileExtension
                                                       typeHierarchy:typeHierarchy];
-    
+
     return result;
 }
 

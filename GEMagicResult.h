@@ -29,13 +29,15 @@
     NSString *mimeType;
     NSString *description;
     NSString *uniformType;
+    NSString *fileExtension;
     NSArray *uniformTypeHierarchy;
 }
 
-- (id)initWithMimeType:(NSString *)aMimeType description:(NSString *)aDescription typeHierarchy:(NSArray *)typeHierarchy;
+- (id)initWithMimeType:(NSString *)aMimeType description:(NSString *)aDescription fileExtension:(NSString *)aFileExtension typeHierarchy:(NSArray *)typeHierarchy;
 @property (nonatomic, readonly, copy) NSString *mimeType;
 @property (nonatomic, readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) NSString *uniformType;
+@property (nonatomic, readonly, copy) NSString *fileExtension;
 @property (nonatomic, readonly, copy) NSArray *uniformTypeHierarchy;
 
 @end

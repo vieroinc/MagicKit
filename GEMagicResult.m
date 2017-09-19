@@ -30,16 +30,18 @@
 @synthesize mimeType;
 @synthesize description;
 @synthesize uniformType;
+@synthesize fileExtension;
 @synthesize uniformTypeHierarchy;
 
-- (id)initWithMimeType:(NSString *)aMimeType description:(NSString *)aDescription typeHierarchy:(NSArray *)typeHierarchy {
+- (id)initWithMimeType:(NSString *)aMimeType description:(NSString *)aDescription fileExtension:(NSString *)aFileExtension typeHierarchy:(NSArray *)typeHierarchy {
     self = [super init];
 	if (self) {
         mimeType = [aMimeType copy];
         description = [aDescription copy];
         uniformTypeHierarchy = [typeHierarchy copy];
-        if (self.uniformTypeHierarchy.count)
-            uniformType = [self.uniformTypeHierarchy objectAtIndex:0];
+        fileExtension = [aFileExtension copy];
+        if (self.uniformTypeHierarchy.count > 0)
+            uniformType = self.uniformTypeHierarchy[0];
     }
     return self;
 }
