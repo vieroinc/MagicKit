@@ -4,9 +4,9 @@ Pod::Spec.new do |s|
   s.version  = '0.0.4'
   s.license  = 'MIT'
   s.summary  = 'Fork of MagicKit with fixes for errors and warnings present in later versions of Clang and updated libmagic sources'
-  s.homepage = 'https://github.com/BionBilateral/MagicKit'
+  s.homepage = 'https://github.com/chezzdev/MagicKit'
   s.author   = 'chezzdev'
-  s.source   = { :git => 'https://github.com/BionBilateral/MagicKit.git',
+  s.source   = { :git => 'https://github.com/chezzdev/MagicKit.git',
                  :tag => '0.0.4' }
 
   s.ios.deployment_target = '5.0'
