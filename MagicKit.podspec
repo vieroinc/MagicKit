@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
-  s.name     = 'MagicKit'
+  s.name     = 'MagicKit-Skygear'
   s.module_name = 'MagicKit'
-  s.version  = '0.0.4'
+  s.version  = '0.0.5'
   s.license  = 'MIT'
   s.summary  = 'Fork of MagicKit with fixes for errors and warnings present in later versions of Clang and updated libmagic sources'
-  s.homepage = 'https://github.com/chezzdev/MagicKit'
-  s.author   = 'chezzdev'
-  s.source   = { :git => 'https://github.com/chezzdev/MagicKit.git',
-                 :tag => '0.0.4' }
+  s.homepage = 'https://github.com/SkygearIO/MagicKit'
+  s.author   = { "Oursky Ltd." => "hello@oursky.com" }
+  s.source   = { :git => 'https://github.com/SkygearIO/MagicKit.git',
+                 :tag => s.version.to_s }
 
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.7'
