@@ -32,7 +32,6 @@
 @synthesize uniformType;
 @synthesize fileExtension;
 @synthesize uniformTypeHierarchy;
-@synthesize extension;
 
 - (id)initWithMimeType:(NSString *)aMimeType description:(NSString *)aDescription fileExtension:(NSString *)aFileExtension typeHierarchy:(NSArray *)typeHierarchy {
     self = [super init];

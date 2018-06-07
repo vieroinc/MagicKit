@@ -40,6 +40,5 @@
 @property (nonatomic, readonly, copy) NSString *uniformType;
 @property (nonatomic, readonly, copy) NSString *fileExtension;
 @property (nonatomic, readonly, copy) NSArray *uniformTypeHierarchy;
-@property (nonatomic, readonly, retain) NSString *extension;
 
 @end
