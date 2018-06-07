@@ -24,24 +24,21 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <MagicKit/MagicKit.h>
 
 @interface GEMagicResult : NSObject {
     NSString *mimeType;
     NSString *description;
     NSString *uniformType;
-	NSString *extension;
+    NSString *fileExtension;
     NSArray *uniformTypeHierarchy;
 }
 
-- (id)initWithMimeType:(NSString *)aMimeType
-		   description:(NSString *)aDescription
-			 extension:(NSString *)extension
-		 typeHierarchy:(NSArray *)typeHierarchy;
+- (id)initWithMimeType:(NSString *)aMimeType description:(NSString *)aDescription fileExtension:(NSString *)aFileExtension typeHierarchy:(NSArray *)typeHierarchy;
 
 @property (nonatomic, readonly, copy) NSString *mimeType;
 @property (nonatomic, readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) NSString *uniformType;
+@property (nonatomic, readonly, copy) NSString *fileExtension;
 @property (nonatomic, readonly, copy) NSArray *uniformTypeHierarchy;
 @property (nonatomic, readonly, retain) NSString *extension;
 

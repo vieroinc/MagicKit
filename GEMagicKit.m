@@ -49,12 +49,7 @@
     if (sharedCookie == NULL) {
         sharedCookie = magic_open(MAGIC_NONE);
 
-        const char *magicFile;
-#if TARGET_OS_MAC && !(TARGET_OS_IPHONE)
-        magicFile = [[[NSBundle bundleForClass:[self class]] pathForResource:@"magic" ofType:@"mgc"] fileSystemRepresentation];
-#else
-        magicFile = [[[NSBundle mainBundle] pathForResource:@"magic" ofType:@"mgc"] fileSystemRepresentation];
-#endif
+        const char *magicFile = [[[NSBundle bundleForClass:[self class]] pathForResource:@"magic" ofType:@"mgc"] fileSystemRepresentation];
         
         if (sharedCookie == NULL || magic_load(sharedCookie, magicFile) == -1) {
             [NSException raise:@"MagicKit" format:@"There was an error opening the magic database: %s", strerror(errno)];
@@ -75,19 +70,37 @@
     if (!description || !mimeType)
         return nil;
     
-    NSString *plainMimeType = [[mimeType componentsSeparatedByString:@";"] objectAtIndex:0];
-    NSString *typeIdentifier = [NSMakeCollectable(UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (CFStringRef)plainMimeType, NULL)) autorelease];
-    NSArray *typeHierarchy = [[NSArray arrayWithObject:typeIdentifier] arrayByAddingObjectsFromArray:[GEMagicKit typeHierarchyForType:typeIdentifier]];
-    
-	NSString *extension = ( NSString *)UTTypeCopyPreferredTagWithClass(( CFStringRef)typeIdentifier, kUTTagClassFilenameExtension);
+    NSString *plainMimeType = [mimeType componentsSeparatedByString:@";"][0];
+    CFStringRef typeIdentifierRef = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)plainMimeType, NULL);
 
-    GEMagicResult *result = [[GEMagicResult alloc] initWithMimeType:mimeType 
+    NSString *typeIdentifier = (__bridge NSString *)typeIdentifierRef;
+    NSArray *typeHierarchy = [@[typeIdentifier] arrayByAddingObjectsFromArray:[GEMagicKit typeHierarchyForType:typeIdentifier]];
+
+    NSString *fileExtension;
+    //NSString *extension = ( NSString *)UTTypeCopyPreferredTagWithClass(( CFStringRef)typeIdentifier, kUTTagClassFilenameExtension);
+
+    if (UTTypeIsDeclared(typeIdentifierRef)) {
+        CFDictionaryRef typeDeclaration = UTTypeCopyDeclaration(typeIdentifierRef);
+        CFDictionaryRef specification = CFDictionaryGetValue(typeDeclaration, kUTTypeTagSpecificationKey);
+
+        CFArrayRef fileExtensions = NULL;
+        Boolean hasExtensions = CFDictionaryGetValueIfPresent(specification, kUTTagClassFilenameExtension, (const void **)&fileExtensions);
+
+        if (hasExtensions && CFArrayGetCount(fileExtensions) > 0) {
+            fileExtension = CFBridgingRelease(CFArrayGetValueAtIndex(fileExtensions, 0));
+        }
+
+        CFRelease(typeDeclaration);
+    }
+
+    GEMagicResult *result = [[GEMagicResult alloc] initWithMimeType:mimeType
                                                         description:description
-														  extension:extension
+                                                      fileExtension:fileExtension
                                                       typeHierarchy:typeHierarchy];
-    
-	[extension autorelease];
-    return [result autorelease];
+
+    CFRelease(typeIdentifierRef);
+
+    return result;
 }
 
 + (NSString *)rawMagicOutputForObject:(id)dataOrFilePath cookie:(magic_t)cookie flags:(int)flags {
@@ -107,9 +120,9 @@
 
 + (NSArray *)typeHierarchyForType:(NSString *)uniformType {
     NSArray *typeHierarchy = nil;
-    
-    NSDictionary *typeDeclaration = [NSMakeCollectable(UTTypeCopyDeclaration((CFStringRef)uniformType)) autorelease];
-    id superTypes = [typeDeclaration objectForKey:(NSString *)kUTTypeConformsToKey];
+
+    NSDictionary *typeDeclaration = CFBridgingRelease(UTTypeCopyDeclaration((__bridge CFStringRef)uniformType));
+    id superTypes = typeDeclaration[(NSString *) kUTTypeConformsToKey];
     
     if ([superTypes isKindOfClass:[NSArray class]]) {
         NSMutableArray *mutableTypeHierarchy = [NSMutableArray arrayWithArray:superTypes];
@@ -119,7 +132,7 @@
 
         typeHierarchy = mutableTypeHierarchy;
     } else if ([superTypes isKindOfClass:[NSString class]]) {
-        typeHierarchy = [NSArray arrayWithObject:superTypes];
+        typeHierarchy = @[superTypes];
     }
     
     return typeHierarchy;
