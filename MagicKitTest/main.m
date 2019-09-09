@@ -26,18 +26,14 @@
 #import <MagicKit/MagicKit.h>
 
 int main (int argc, const char * argv[]) {
-    if (argc > 1) {
-        NSString *filePath = [NSString stringWithUTF8String:argv[1]];
+        NSString *filePath = @"/Users/macbookpro/Downloads/cheers_1440x960.heic";
         GEMagicResult *result = [GEMagicKit magicForFileAtPath:filePath];
 
         NSLog(@"MIME Type: %@", result.mimeType);
         NSLog(@"Description: %@", result.description);
 		NSLog(@"Uniform Type: %@", result.uniformType);
-		NSLog(@"Extension: %@", result.extension);
+		NSLog(@"Extension: %@", result.fileExtension);
         NSLog(@"UTIs: %@", result.uniformTypeHierarchy);
-    } else {
-        NSLog(@"Supply a path to the file whose type you wish to determine.");
-    }
 
     return 0;
 }
